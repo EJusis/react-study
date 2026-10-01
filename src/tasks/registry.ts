@@ -28,4 +28,13 @@ export const tasks: Task[] = [
     concepts: ["useState", "useEffect", "Lists & keys", "Forms"],
     component: lazy(() => import("./todo/TodoTask")),
   },
+  {
+    slug: "form",
+    title: "Sign-Up Form",
+    description:
+      "Controlled inputs with validation, touched-field errors and a success state.",
+    difficulty: "Medium",
+    concepts: ["useState", "Controlled inputs", "Forms", "Derived state"],
+    component: lazy(() => import("./form/FormTask")),
+  },
 ];
