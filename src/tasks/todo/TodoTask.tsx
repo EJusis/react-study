@@ -22,7 +22,7 @@
 //
 // A reference solution is saved in /solutions/todo/TodoTask.tsx. Try not to peek until you're done!
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Todo {
   id: string;
@@ -32,16 +32,25 @@ interface Todo {
 
 type Filter = "all" | "active" | "done";
 
-const initialTasks: Todo[] = [
-  { id: crypto.randomUUID(), text: "Buy groceries", done: false },
-  { id: crypto.randomUUID(), text: "Walk the dog", done: false },
-  { id: crypto.randomUUID(), text: "Read a book", done: false },
-];
+const LOCAL_STORAGE_STORAGE_KEY = "react-study:todos";
+
+function loadTasks(): Todo[] {
+  try {
+    const savedTasks = localStorage.getItem(LOCAL_STORAGE_STORAGE_KEY);
+    return savedTasks ? (JSON.parse(savedTasks) as Todo[]) : [];
+  } catch {
+    return [];
+  }
+}
 
 export default function TodoTask() {
-  const [tasks, setTasks] = useState<Todo[]>(initialTasks);
+  const [tasks, setTasks] = useState<Todo[]>(loadTasks);
   const [newText, setNewText] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_STORAGE_KEY, JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTodo = (e: React.SubmitEvent) => {
     e.preventDefault();
