@@ -32,9 +32,14 @@ export const tasks: Task[] = [
     slug: "form",
     title: "Sign-Up Form",
     description:
-      "Controlled inputs with validation, touched-field errors and a success state.",
+      "The same validated sign-up form built three ways: controlled, uncontrolled and with react-hook-form.",
     difficulty: "Medium",
-    concepts: ["useState", "Controlled inputs", "Forms", "Derived state"],
+    concepts: [
+      "Controlled inputs",
+      "Uncontrolled inputs",
+      "react-hook-form",
+      "Derived state",
+    ],
     component: lazy(() => import("./form/FormTask")),
   },
 ];
