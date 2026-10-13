@@ -19,5 +19,58 @@
 //   - <button type="reset"> clears the DOM inputs, but not your React state
 
 export default function UncontrolledForm() {
-  return <p className="text-slate-500">Uncontrolled form — not built yet.</p>;
+  const handleSubmit = () => {};
+  return (
+    <form
+      action=""
+      className="space-y-4 rounded-lg border border-slate-200 bg-white p-6"
+      onSubmit={handleSubmit}
+    >
+      <div className="flex flex-col gap-1">
+        <label
+          htmlFor="name-input"
+          className="text-sm font-medium text-slate-700"
+        >
+          Name
+        </label>
+        <input
+          id="name-input"
+          type="text"
+          name="name"
+          className="rounded-lg border border-slate-300 bg-white px-3 py-2 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+        />
+      </div>
+      <div className="flex flex-col gap-1">
+        <label
+          htmlFor="email-input"
+          className="text-sm font-medium text-slate-700"
+        >
+          Email
+        </label>
+        <input
+          autoComplete="email"
+          id="email-input"
+          type="email"
+          name="email"
+          className="rounded-lg border border-slate-300 bg-white px-3 py-2 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+          required
+        />
+      </div>
+      <div className="flex flex-col gap-1">
+        <label
+          htmlFor="password-input"
+          className="text-sm font-medium text-slate-700"
+        >
+          Password
+        </label>
+        <input
+          autoComplete="password"
+          id="password-input"
+          type="password"
+          name="password"
+          className="rounded-lg border border-slate-300 bg-white px-3 py-2 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-100"
+        />
+      </div>
+    </form>
+  );
 }
